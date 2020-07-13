@@ -48,9 +48,9 @@ function update(evento){
 
 function iniciarJogo(){
 	//criar o limite do campo para ao cruzar, resurgir do lado oposto
-	if (snake[0].x > 15 * box && direcao == "direita" ) {snake[0].x = -1};
+	if (snake[0].x > 15 * box && direcao == "direita" ) {snake[0].x = 0};
 	if (snake[0].x < 0 && direcao == "esquerda" )	    {snake[0].x = 16 * box};
-	if (snake[0].y > 15 * box && direcao == "baixo" )   {snake[0].y = -1};
+	if (snake[0].y > 15 * box && direcao == "baixo" )   {snake[0].y = 0};
 	if (snake[0].y < 0 && direcao == "cima" )		    {snake[0].y = 16 * box};
 
 	//criar choque contra o corpo e game over
