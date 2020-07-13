@@ -45,6 +45,8 @@ function update(evento){
 	if (evento.keyCode == 40 && direcao != "cima") { direcao = "baixo"};
 }
 
+
+
 function iniciarJogo(){
 	//criar o limite do campo para ao cruzar, resurgir do lado oposto
 	if (snake[0].x > 15 * box && direcao == "direita" ) {snake[0].x = -1};
@@ -65,9 +67,17 @@ function iniciarJogo(){
 	if (direcao == "cima") snakeY -= box;
 	if (direcao == "baixo") snakeY += box;
 
-	//elimina a "bunda" da cobra para após acrescentar a frente a "cabeça"
-	snake.pop();
 
+	if (snakeX != comida.x || snakeY != comida.y){
+		//elimina a "bunda" da cobra para após acrescentar a frente a "cabeça"
+		snake.pop();
+	} else {
+		comida.x = Math.floor(Math.random() * 15 + 1) * box;
+		comida.y = Math.floor(Math.random() * 15 + 1) * box;
+	}
+
+	
+	//cria a cabeca
 	let novaCabeca = {
 		x: snakeX,
 		y: snakeY
