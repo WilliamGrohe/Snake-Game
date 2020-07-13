@@ -6,6 +6,7 @@ snake[0] = {
 	x: 8 * box,
 	y: 8 * box
 }
+let direcao = "direita";
 
 function criarBG(){
 	context.fillStyle = "lightgreen";
@@ -20,5 +21,27 @@ function criarCobrinha(){
 	}
 }
 
-criarBG();
-criarCobrinha();
+function iniciarJogo(){
+	criarBG();
+	criarCobrinha();
+
+	let snakeX = snake[0].x;
+	let snakeY = snake[0].y;
+
+	if (direcao == "direita") snakeX += box;
+	if (direcao == "esquerda") snakeX -= box;
+	if (direcao == "cima") snakeY -= box;
+	if (direcao == "baixo") snakeY += box;
+
+	//elimina a "bunda" da cobra para após acrescentar a frente a "cabeça"
+	snake.pop();
+
+	let novaCabeca = {
+		x: snakeX,
+		y: snakeY
+	}
+
+	snake.unshift(novaCabeca);
+}
+
+let jogo = setInterval(iniciarJogo, 100);
