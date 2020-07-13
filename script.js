@@ -7,6 +7,14 @@ snake[0] = {
 	y: 8 * box
 }
 let direcao = "direita";
+let comida = [];
+comida = {
+	x: Math.floor(Math.random() * 15 + 1) * box, 
+	y: Math.floor(Math.random() * 15 + 1) * box
+}
+
+
+
 
 function criarBG(){
 	context.fillStyle = "lightgreen";
@@ -21,6 +29,13 @@ function criarCobrinha(){
 	}
 }
 
+//criando a comida
+function criarComida() {
+	context.fillStyle = "red";
+	context.fillRect(comida.x, comida.y, box, box);
+}
+
+
 //recupera o evento de clique da tecla
 document.addEventListener('keydown', update);
 function update(evento){
@@ -31,6 +46,7 @@ function update(evento){
 }
 
 function iniciarJogo(){
+	//criar o limite do campo para ao cruzar, resurgir do lado oposto
 	if (snake[0].x > 15 * box && direcao == "direita" ) {snake[0].x = -1};
 	if (snake[0].x < 0 && direcao == "esquerda" )	    {snake[0].x = 16 * box};
 	if (snake[0].y > 15 * box && direcao == "baixo" )   {snake[0].y = -1};
@@ -39,6 +55,7 @@ function iniciarJogo(){
 
 	criarBG();
 	criarCobrinha();
+	criarComida();
 
 	let snakeX = snake[0].x;
 	let snakeY = snake[0].y;
