@@ -21,6 +21,15 @@ function criarCobrinha(){
 	}
 }
 
+//recupera o evento de clique da tecla
+document.addEventListener('keydown', update);
+function update(evento){
+	if (evento.keyCode == 37 && direcao != "direita") { direcao = "esquerda"};
+	if (evento.keyCode == 38 && direcao != "baixo") { direcao = "cima"};
+	if (evento.keyCode == 39 && direcao != "esquerda") { direcao = "direita"};
+	if (evento.keyCode == 40 && direcao != "cima") { direcao = "baixo"};
+}
+
 function iniciarJogo(){
 	criarBG();
 	criarCobrinha();
