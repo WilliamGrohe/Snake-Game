@@ -14,10 +14,8 @@ comida = {
 }
 
 
-
-
 function criarBG(){
-	context.fillStyle = "lightgreen";
+	context.fillStyle = "#a6c7a5";
 	context.fillRect(0, 0, 16 * box, 16 * box);
 }
 
